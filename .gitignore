@@ -1,0 +1,20 @@
+# Dependencias de Node.js
+node_modules/
+npm-debug.log
+
+# Credenciales y secretos (¡NUNCA SUBIR EL .ENV!)
+.env
+
+# Archivos de compilación de React (Vite)
+dist/
+build/
+
+# Bases de datos locales de Docker (Volúmenes)
+postgres_data/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+#solo por que ya esta en la nube
+docker-compose.yml
