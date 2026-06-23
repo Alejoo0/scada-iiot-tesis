@@ -53,7 +53,7 @@ export default function WeightView() {
 
   const fetchCommandsLog = async () => {
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/planta02/historial-comandos');
+      const res = await fetch('http://136.114.30.62:5000/api/planta02/historial-comandos');
       if (res.ok) {
         const data = await res.json();
         setHistorialComandos(data);
@@ -69,7 +69,7 @@ export default function WeightView() {
 
     const fetchTelemetria = async () => {
       try {
-        const res = await fetch('${import.meta.env.VITE_API_URL}/api/planta02/telemetria');
+        const res = await fetch('http://136.114.30.62:5000/api/planta02/telemetria');
         if (res.ok) {
           const data = await res.json();
           setTelemetria(prev => ({ ...prev, ...data }));
@@ -129,7 +129,7 @@ export default function WeightView() {
     if (comando === 'AUTO_OFF') { setIsAuto(false); }
 
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/planta02/control', {
+      const res = await fetch('http://136.114.30.62:5000/api/planta02/control', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comando, username: user?.username })

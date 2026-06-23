@@ -48,7 +48,7 @@ export default function SortingView() {
 
   const fetchCommandsLog = async () => {
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/factory/historial-comandos');
+      const res = await fetch('http://136.114.30.62:5000/api/factory/historial-comandos');
       if (res.ok) {
         const data = await res.json();
         setHistorialComandos(data);
@@ -64,7 +64,7 @@ export default function SortingView() {
 
     const fetchTelemetria = async () => {
       try {
-        const res = await fetch('${import.meta.env.VITE_API_URL}/api/factory/telemetria');
+        const res = await fetch('http://136.114.30.62:5000/api/factory/telemetria');
         if (res.ok) {
           const data = await res.json();
           setTelemetria(prev => ({ ...prev, ...data }));
@@ -125,7 +125,7 @@ export default function SortingView() {
     if (comando === 'RESET') { setTiempoActivo(0); localStorage.setItem('scada_p1_time', 0); }
 
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/factory/control', {
+      const res = await fetch('http://136.114.30.62:5000/api/factory/control', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comando, username: user?.username })
