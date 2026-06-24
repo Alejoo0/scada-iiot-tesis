@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Play, Square, RotateCcw, Box, Layers, Activity, Clock, Server, ArrowRight, ArrowLeft, ArrowUp, BarChart3, ListFilter } from 'lucide-react';
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { ExternalLink, Database } from 'lucide-react';
 
 // Función súper estricta para evaluar señales del PLC (Limpia espacios, strings y booleanos)
 const isStateActive = (value) => {
@@ -312,6 +313,46 @@ export default function SortingView() {
             </ResponsiveContainer>
           </div>
         </section>
+
+                {/* PUENTE AL HISTORIADOR DE DATOS (INFLUXDB) */}
+      <section style={{ ...styles.card, gridColumn: '1 / -1', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f8fafc', border: '1px dashed #cbd5e1' }}>
+        <div>
+          <h3 style={{ margin: 0, fontSize: '15px', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Database size={18} color="#3b82f6" />
+            Análisis Avanzado y Exportación de Datos
+          </h3>
+          <p style={{ margin: '4px 0 0 0', fontSize: '13px', color: '#64748b' }}>
+            Acceda al portal del Historiador (InfluxDB) para realizar consultas complejas, generar reportes históricos y descargar archivos CSV.
+          </p>
+        </div>
+        
+        <div style={{ textAlign: 'right' }}>
+          <a 
+            href="http://136.114.30.62:8086" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '8px', 
+              backgroundColor: '#ffffff', 
+              color: '#3b82f6', 
+              padding: '8px 16px', 
+              borderRadius: '6px', 
+              textDecoration: 'none', 
+              fontWeight: '600', 
+              fontSize: '13px',
+              border: '1px solid #bfdbfe',
+              transition: 'all 0.2s'
+            }}
+          >
+            Abrir InfluxDB <ExternalLink size={16} />
+          </a>
+          <span style={{ display: 'block', fontSize: '11px', color: '#94a3b8', marginTop: '6px' }}>
+            * Requiere credenciales de acceso analítico
+          </span>
+        </div>
+      </section>
 
         {/* TABLA POSTGRESQL (HISTORIAL DE COMANDOS) */}
         <section style={{ ...styles.card, gridColumn: '1 / -1' }}>
